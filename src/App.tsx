@@ -1,24 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { FC,ChangeEvent, useState } from 'react';
+import { ITodo } from './interfaces';
+import Todo from './components/Todo';
 import './App.css';
 
-function App() {
+const App:FC = () => {
+  const [todo, setTodo] = useState<string>('');
+  const [days, setDays] = useState<number>(0);
+  const [todos, setTodos] = useState<ITodo[]>([]);
+
+  const handleChange = (event:ChangeEvent<HTMLInputElement>):void => {
+    if (event.target.name==='todo'){
+      setTodo(event.target.value);
+    }
+    if (event.target.name==='days'){
+      setDays(Number(event.target.value));
+    }
+  }
+
+  const addTodo = ():void => {
+     const newTodo = {
+        todoName: todo,
+        days: days
+     };
+      setTodos([...todos, newTodo]);
+      setTodo('');
+      setDays(0);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="app-input">
+        <input type="text" 
+               placeholder="What needs to be done?" 
+               name='todo'
+               value={todo}
+               onChange={handleChange}/>
+        <input type="number" 
+                name='days'
+                value={days}
+                placeholder="Days for completion" 
+                onChange={handleChange}/>
+        <button onClick={addTodo}>Add</button>
+      </div>
+      <div className='todo-list'>
+          <div>
+            {
+              todos.map((todo:ITodo, index:number) => {
+                return <Todo key={index} todo={todo}/>
+              })
+            }
+           </div> 
+        
+      </div>
     </div>
   );
 }

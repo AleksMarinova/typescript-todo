@@ -1,13 +1,59 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: beige;
+}
+
+.App .app-input input:focus{
+    outline: none;
+}
+
+.app-input {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    flex: 30%;
+}
+
+.app-input button {
+    background: none;
+    padding: 0 1em;
+    font-size: 1.5em;
+    font-weight: lighter;
+    border: 1px solid #ccc;
+    color: black;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+.app-input input{
+    margin-bottom: 1em;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: beige;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 70%;
+    width: 100%;
+    flex: 70%;
 }
