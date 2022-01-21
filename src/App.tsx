@@ -27,6 +27,12 @@ const App:FC = () => {
       setDays(0);
   }
 
+  const deleteTodo = (todoToDelete: string):void => {
+      setTodos(todos.filter((todo)=>{
+        return todo.todoName !== todoToDelete;
+      }))
+  }
+
   return (
     <div className="App">
       <div className="app-input">
@@ -46,7 +52,7 @@ const App:FC = () => {
           <div>
             {
               todos.map((todo:ITodo, index:number) => {
-                return <Todo key={index} todo={todo}/>
+                return <Todo key={index} todo={todo} deleteTodo={deleteTodo}/>
               })
             }
            </div> 

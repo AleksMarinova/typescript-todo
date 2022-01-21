@@ -29,11 +29,11 @@
 }
 
 .app-input button {
-    background: none;
+    background: whitesmoke;
     padding: 0 1em;
     font-size: 1.5em;
     font-weight: lighter;
-    border: 1px solid #ccc;
+    border: 1px solid whitesmoke;
     color: black;
     cursor: pointer;
     margin-top: 1rem;
@@ -54,6 +54,33 @@
     justify-content: center;
     width: 100%;
     flex: 70%;
-    width: 100%;
-    flex: 70%;
+    padding-top: 3em;
+    background-color: whitesmoke;
 }
+
+.todo {
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin: 1em;
+    padding: 0.3em 1em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 100%;
+}
+
+.todo .content p{
+   margin: 0.5em;
+}
+
+.todo .content p:first-child {
+    border-bottom: 1px solid beige;
+}
+
+.todo button{
+    background-color: coral;
+    border: 1px solid beige;
+    padding: 0.3em 0.5em;
+    border-radius: 3px;
+}
+
