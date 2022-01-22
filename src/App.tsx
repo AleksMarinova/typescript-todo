@@ -6,6 +6,7 @@ import './App.css';
 const App:FC = () => {
   const [todo, setTodo] = useState<string>('');
   const [days, setDays] = useState<number>(0);
+  const [done, setDone] = useState<boolean>(false);
   const [todos, setTodos] = useState<ITodo[]>([]);
 
   const handleChange = (event:ChangeEvent<HTMLInputElement>):void => {
@@ -20,7 +21,8 @@ const App:FC = () => {
   const addTodo = ():void => {
      const newTodo = {
         todoName: todo,
-        days: days
+        days: days,
+        done: done
      };
       setTodos([...todos, newTodo]);
       setTodo('');
@@ -32,6 +34,25 @@ const App:FC = () => {
         return todo.todoName !== todoToDelete;
       }))
   }
+
+  const toggleDone = (todoToToggleName: string):void => {
+      setTodos(todos.map((todo)=>{
+        if (todo.todoName === todoToToggleName){
+          todo.done = !todo.done;
+        }
+        return todo;
+      }))
+  }
+
+const editTodo=(todoToEditName: string, newTodoToEditName: string, newTodoToEditDays: number) => {
+  setTodos(todos.map((todo)=>{
+    if (todo.todoName === todoToEditName){
+      todo.todoName = newTodoToEditName;
+      todo.days = newTodoToEditDays;
+    }
+    return todo;
+  }))
+}
 
   return (
     <div className="App">
@@ -52,7 +73,7 @@ const App:FC = () => {
           <div>
             {
               todos.map((todo:ITodo, index:number) => {
-                return <Todo key={index} todo={todo} deleteTodo={deleteTodo}/>
+                return <Todo key={index} todo={todo} deleteTodo={deleteTodo} toggleDone={toggleDone}/>
               })
             }
            </div> 

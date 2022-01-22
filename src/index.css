@@ -84,3 +84,6 @@
     border-radius: 3px;
 }
 
+.done .content{
+   text-decoration: line-through;
+}
