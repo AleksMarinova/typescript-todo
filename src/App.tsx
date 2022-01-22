@@ -1,6 +1,7 @@
 import React, { FC,ChangeEvent, useState } from 'react';
 import { ITodo } from './interfaces';
 import Todo from './components/Todo';
+import { nanoid } from 'nanoid';
 import './App.css';
 
 const App:FC = () => {
@@ -70,13 +71,12 @@ const editTodo=(todoToEditName: string, newTodoToEditName: string, newTodoToEdit
         <button onClick={addTodo}>Add</button>
       </div>
       <div className='todo-list'>
-          <div>
+          
             {
               todos.map((todo:ITodo, index:number) => {
-                return <Todo key={index} todo={todo} deleteTodo={deleteTodo} toggleDone={toggleDone}/>
+                return <Todo key={nanoid()} todo={todo} deleteTodo={deleteTodo} toggleDone={toggleDone} editTodo={editTodo}/>
               })
             }
-           </div> 
         
       </div>
     </div>
