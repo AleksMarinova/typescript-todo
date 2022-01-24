@@ -4,14 +4,18 @@ import { ITodo } from '../interfaces';
 interface Props {
     todo: ITodo, 
     deleteTodo(todoToDelete: string): void,
-    toggleDone(todoToToggle: string): void,
     editTodo(todoToEditName: string, newTodoToEditName: string, newTodoToEditDays: number): void
 }
 
-const Todo = ({todo, deleteTodo, toggleDone, editTodo}:Props) => {
+const Todo = ({todo, deleteTodo, editTodo}:Props) => {
+    const [done, setDone] = useState<boolean>(false);
     const [editable, setEditable] = useState(false);
     const [newTodoName, setNewTodoName] = useState(todo.todoName);
     const [newTodoDays, setNewTodoDays] = useState(todo.days);
+
+    const toggleDone = ():void => {
+        setDone(!done);
+    }
 
     const handleEdit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.stopPropagation();
@@ -24,7 +28,7 @@ const Todo = ({todo, deleteTodo, toggleDone, editTodo}:Props) => {
         if (editable===false) {
             return (
                 <>
-                 <div className="content" onClick={(e)=>toggleDone(todo.todoName)} >
+                 <div className="content" onClick={(e)=>toggleDone()} >
                 <p>Todo: {todo.todoName}</p>
                 <p>Deadline in {todo.days} days.</p>
                      </div>
@@ -49,7 +53,7 @@ const Todo = ({todo, deleteTodo, toggleDone, editTodo}:Props) => {
     }
 
     return (
-        <div className={todo.done ? "todo done": "todo"}>
+        <div className={done ? "todo done": "todo"}>
             {render()}
         </div>
     )
