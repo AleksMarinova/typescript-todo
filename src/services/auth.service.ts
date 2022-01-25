@@ -4,11 +4,10 @@ import { IUser } from "../interfaces";
 const API_URL = "http://localhost:5000/api/auth/";
 
 export const register = (obj:IUser) => {
-    return axios.post(API_URL + "signup", {
+    return axios.post(API_URL + "register", {
         username: obj.username,
         password: obj.password,
         email: obj.email,
-        id: obj.id
     });
 };
 

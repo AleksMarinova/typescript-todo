@@ -1,4 +1,4 @@
-import { nanoid } from "nanoid";
+
 import { IUser } from "../interfaces";
 import {register} from "../services/auth.service";
 import { useState } from "react";
@@ -15,7 +15,6 @@ const Register = () => {
         event.preventDefault();
         event.stopPropagation();
         const newUser: IUser = {
-            id: nanoid(),
             username,
             password,
             email
