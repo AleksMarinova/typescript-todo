@@ -24,6 +24,13 @@ const Todos =()=>{
       getFromLocalStorage();
     }, []);
 
+    useEffect(()=>{
+      if (typeof user === 'string'){
+        const parsedUser = JSON.parse(user);
+        setTodos(parsedUser.todos);
+      }
+    }, [user]);
+
   const handleChange = (event:ChangeEvent<HTMLInputElement>):void => {
     event.preventDefault();
     event.stopPropagation();
