@@ -1,1 +1,1 @@
-simple todo with typescript and react
+simple todo with typescript and react  with login and register components
